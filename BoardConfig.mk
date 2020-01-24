@@ -81,6 +81,9 @@ ifeq ($(HOST_OS),linux)
   endif
 endif
 
+# Charger Mode
+TARGET_PIXEL_CHARGE_ANIM := true
+
 # Display
 TARGET_USES_HWC2 := true
 
