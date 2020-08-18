@@ -77,6 +77,9 @@ on init
     # Allow both charger and hal_light to access panel0 backlight
     chown system system /sys/class/backlight/panel0-backlight/brightness
 
+    # Report max frequency to unity tasks.
+    write /proc/sys/kernel/sched_lib_name "UnityMain,libunity.so"
+    write /proc/sys/kernel/sched_lib_mask_force 255
 
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
