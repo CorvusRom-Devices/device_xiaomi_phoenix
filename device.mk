@@ -6,7 +6,10 @@
 
 # Get non-open-source specific aspects
 $(call inherit-product-if-exists, vendor/xiaomi/phoenix/phoenix-vendor.mk)
-$(call inherit-product-if-exists, vendor/xiaomi/miuicamera/config.mk)
+#$(call inherit-product-if-exists, vendor/xiaomi/miuicamera/config.mk)
+
+# ANXCamera
+$(call inherit-product-if-exists, vendor/aeonax/ANXCamera/anx-vendor.mk)
 
 # Audio
 PRODUCT_COPY_FILES += \
