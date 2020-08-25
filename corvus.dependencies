@@ -2,12 +2,12 @@
   {
     "repository": "rakeshraimca/Hardrock_kernel_phoenix",
     "target_path": "kernel/xiaomi/sm6150",
-    "branch": "ten"
+    "branch": "sm6150"
   },
   {
-    "repository": "crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-6607189",
-    "target_path": "prebuilts/clang/host/linux-x86/clang-6607189",
-    "branch": "10.0"
+    "repository": "kdrag0n/proton-clang",
+    "target_path": "prebuilts/clang/host/linux-x86/clang-proton",
+    "branch": "master"
   },
   {
     "repository": "crdroidandroid/android_hardware_xiaomi",
@@ -15,24 +15,24 @@
     "branch": "10.0"
   },
   {
-    "repository": "rakeshraimca/android_vendor_aeonax_ANXCamera",
+    "repository": "sarveshrulz/android_vendor_aeonax_ANXCamera",
     "target_path": "vendor/aeonax/ANXCamera",
     "branch": "master"
   },
   {
-    "repository": "Corvus-Devices/vendor_xiaomi_phoenix",
+    "repository": "CorvusRom-Devices/vendor_xiaomi_phoenix",
     "target_path": "vendor/xiaomi",
-    "branch": "corvus"
+    "branch": "10"
   },
   {
-    "repository": "Corvus-Devices/device_xiaomi_phoenix",
+    "repository": "CorvusRom-Devices/device_xiaomi_phoenix",
     "target_path": "device/xiaomi/phoenix",
-    "branch": "corvus"
+    "branch": "10"
   },
   {
-    "repository": "Corvus-Devices/device_xiaomi_sm6150-common",
+    "repository": "CorvusRom-Devices/android_device_xiaomi_sm6150-common",
     "target_path": "device/xiaomi/sm6150-common",
-    "branch": "corvus"
+    "branch": "10"
   },
   {
     "repository": "saikiran2001/packages_apps_PixelLiveWallpaper",
@@ -41,3 +41,4 @@
     "remote": "gitlab"
   }
 ]
+
