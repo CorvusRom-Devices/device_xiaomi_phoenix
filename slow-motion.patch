@@ -1,0 +1,28 @@
+From db03b69ad64d45d6e1b1a4dc3da6dfa77985e6c1 Mon Sep 17 00:00:00 2001
+From: rakesh roshan <rakeshraimca@gmail.com>
+Date: Wed, 26 Aug 2020 12:30:41 +0530
+Subject: [PATCH] updating Mediaprofiles CAMCORDER_QUALITY_LIST_START and
+ CAMCORDER_QUALITY_LIST_END as per frameworks/av
+
+---
+ media/jni/android_media_MediaProfiles.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/media/jni/android_media_MediaProfiles.cpp b/media/jni/android_media_MediaProfiles.cpp
+index ad13dd0af21..4fc5ab00e75 100644
+--- a/media/jni/android_media_MediaProfiles.cpp
++++ b/media/jni/android_media_MediaProfiles.cpp
+@@ -171,8 +171,8 @@ static bool isCamcorderQualityKnown(int quality)
+              quality <= CAMCORDER_QUALITY_TIME_LAPSE_LIST_END) ||
+              (quality >= CAMCORDER_QUALITY_HIGH_SPEED_LIST_START &&
+               quality <= CAMCORDER_QUALITY_HIGH_SPEED_LIST_END) ||
+-             (quality >= CAMCORDER_QUALITY_VENDOR_LIST_START &&
+-              quality <= CAMCORDER_QUALITY_VENDOR_LIST_END));
++             (quality >= CAMCORDER_QUALITY_LIST_START &&
++              quality <= CAMCORDER_QUALITY_LIST_END));
+ }
+ 
+ static jobject
+-- 
+2.28.0
+
