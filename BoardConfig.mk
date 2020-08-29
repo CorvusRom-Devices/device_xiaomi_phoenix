@@ -61,6 +61,10 @@ BOARD_VENDORIMAGE_PARTITION_SIZE := 1610612736
 # Platform
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno618
 
+# Power
+TARGET_TAP_TO_WAKE_NODE := "/proc/tp_gesture"
+
+
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 TARGET_PRODUCT_PROP += $(DEVICE_PATH)/product.prop
