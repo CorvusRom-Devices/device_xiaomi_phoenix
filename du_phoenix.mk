@@ -15,7 +15,7 @@ PRODUCT_DEVICE := phoenix
 PRODUCT_BRAND := Redmi
 PRODUCT_MODEL := Redmi K30
 PRODUCT_MANUFACTURER := Xiaomi
-
+USE_GAPPS := true
 
 # Properties
 TARGET_INCLUDE_WIFI_EXT := true
