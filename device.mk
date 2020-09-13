@@ -98,6 +98,12 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_BUILD_SUPER_PARTITION := false
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 
+# RCS
+PRODUCT_PACKAGES += \
+    com.android.ims.rcsmanager \
+    PresencePolling \
+    RcsService
+
 # Wallpapers
 PRODUCT_PACKAGES += \
     PixelLiveWallpaperPrebuilt
