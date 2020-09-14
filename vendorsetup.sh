@@ -1,3 +1,4 @@
+export SKIP_ABI_CHECKS=true
 rm -rf frameworks/av
 git clone https://github.com/crdroidandroid/android_frameworks_av.git -b 10.0 frameworks/av
 
