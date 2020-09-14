@@ -1,0 +1,189 @@
+From eeb0a85efb8ef2ac25d288226a71b31e02d3f899 Mon Sep 17 00:00:00 2001
+From: rakesh roshan <rakeshraimca@gmail.com>
+Date: Wed, 26 Aug 2020 12:01:13 +0530
+Subject: [PATCH] Adapt framework/av as per corvus
+
+---
+ camera/Android.bp                                  |  2 +-
+ camera/parameters.go                               |  2 +-
+ media/codec2/vndk/include/util/C2InterfaceUtils.h  |  2 +-
+ media/libstagefright/bqhelper/Android.bp           |  2 +-
+ media/libstagefright/omx/Android.bp                |  2 +-
+ media/mediaserver/Android.bp                       |  2 +-
+ services/camera/libcameraservice/Android.bp        |  8 ++++----
+ services/camera/libcameraservice/CameraService.cpp | 14 ++++++++++++--
+ 8 files changed, 22 insertions(+), 12 deletions(-)
+
+diff --git a/camera/Android.bp b/camera/Android.bp
+index 68ba155c95..303a60c8f4 100644
+--- a/camera/Android.bp
++++ b/camera/Android.bp
+@@ -69,7 +69,7 @@ cc_library_shared {
+     ],
+ 
+     product_variables: {
+-        lineage: {
++        du: {
+             uses_generic_camera_parameter_library: {
+                 srcs: [
+                     "CameraParameters.cpp",
+diff --git a/camera/parameters.go b/camera/parameters.go
+index dd12167e18..753cfc6b36 100644
+--- a/camera/parameters.go
++++ b/camera/parameters.go
+@@ -11,7 +11,7 @@
+ // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ // See the License for the specific language governing permissions and
+ // limitations under the License.
+-package lineage;
++package du;
+ 
+ import (
+   "android/soong/android"
+diff --git a/media/codec2/vndk/include/util/C2InterfaceUtils.h b/media/codec2/vndk/include/util/C2InterfaceUtils.h
+index e9037e5c4d..4820c6cb78 100644
+--- a/media/codec2/vndk/include/util/C2InterfaceUtils.h
++++ b/media/codec2/vndk/include/util/C2InterfaceUtils.h
+@@ -947,7 +947,7 @@ struct C2FieldUtils {
+     struct _Inspector;
+ 
+     /**
+-     * An extended field descriptor object with structural information (lineage back to the root of
++     * An extended field descriptor object with structural information (du back to the root of
+      * the param).
+      */
+     struct Info {
+diff --git a/media/libstagefright/bqhelper/Android.bp b/media/libstagefright/bqhelper/Android.bp
+index e7358cbcd0..ae94c02748 100644
+--- a/media/libstagefright/bqhelper/Android.bp
++++ b/media/libstagefright/bqhelper/Android.bp
+@@ -63,7 +63,7 @@ cc_library_shared {
+     ],
+ 
+     product_variables: {
+-        lineage: {
++        du: {
+             uses_qcom_bsp_legacy: {
+                 cppflags: ["-DQCOM_BSP_LEGACY"],
+             },
+diff --git a/media/libstagefright/omx/Android.bp b/media/libstagefright/omx/Android.bp
+index 242597f698..021b09282f 100644
+--- a/media/libstagefright/omx/Android.bp
++++ b/media/libstagefright/omx/Android.bp
+@@ -65,7 +65,7 @@ cc_library_shared {
+     ],
+ 
+     product_variables: {
+-        lineage: {
++        du: {
+             uses_qcom_bsp_legacy: {
+                 cppflags: ["-DQCOM_BSP_LEGACY"],
+             },
+diff --git a/media/mediaserver/Android.bp b/media/mediaserver/Android.bp
+index d77c212365..623256e669 100644
+--- a/media/mediaserver/Android.bp
++++ b/media/mediaserver/Android.bp
+@@ -44,7 +44,7 @@ cc_binary {
+     ],
+ 
+     product_variables: {
+-        lineage: {
++        du: {
+             has_legacy_camera_hal1: {
+                 overrides: ["cameraserver"],
+                 cflags: ["-DNO_CAMERA_SERVER"],
+diff --git a/services/camera/libcameraservice/Android.bp b/services/camera/libcameraservice/Android.bp
+index 84965d4a4d..9a9a5b9027 100644
+--- a/services/camera/libcameraservice/Android.bp
++++ b/services/camera/libcameraservice/Android.bp
+@@ -110,7 +110,6 @@ cc_library_shared {
+         "android.hardware.camera.device@3.3",
+         "android.hardware.camera.device@3.4",
+         "android.hardware.camera.device@3.5",
+-        "vendor.lineage.camera.motor@1.0",
+     ],
+ 
+     export_shared_lib_headers: [
+@@ -138,12 +137,13 @@ cc_library_shared {
+     ],
+ 
+     product_variables: {
+-        lineage: {
++        du: {
+             has_legacy_camera_hal1: {
+                 cflags: ["-DNO_CAMERA_SERVER"],
+             },
+-            target_camera_needs_client_info: {
+-                cflags: ["-DTARGET_NEEDS_CLIENT_INFO"],
++            uses_motorized_camera: {
++                cppflags: ["-DMOTORIZED_CAMERA_DEVICE"],
++                shared_libs: ["vendor.lineage.camera.motor@1.0",],
+             },
+             uses_qti_camera_device: {
+                 cppflags: ["-DQTI_CAMERA_DEVICE"],
+diff --git a/services/camera/libcameraservice/CameraService.cpp b/services/camera/libcameraservice/CameraService.cpp
+index 6098dc24fb..706a835649 100644
+--- a/services/camera/libcameraservice/CameraService.cpp
++++ b/services/camera/libcameraservice/CameraService.cpp
+@@ -80,7 +80,11 @@
+ #include "utils/TagMonitor.h"
+ #include "utils/CameraThreadState.h"
+ 
++//#include <vendor/du/camera/motor/1.0/ICameraMotor.h>
++
++#ifdef MOTORIZED_CAMERA_DEVICE
+ #include <vendor/lineage/camera/motor/1.0/ICameraMotor.h>
++#endif
+ 
+ namespace {
+     const char* kPermissionServiceName = "permission";
+@@ -97,7 +101,10 @@ using hardware::ICameraServiceProxy;
+ using hardware::ICameraServiceListener;
+ using hardware::camera::common::V1_0::CameraDeviceStatus;
+ using hardware::camera::common::V1_0::TorchModeStatus;
++
++#ifdef MOTORIZED_CAMERA_DEVICE
+ using vendor::lineage::camera::motor::V1_0::ICameraMotor;
++#endif
+ 
+ // ----------------------------------------------------------------------------
+ // Logging support -- this is for debugging only
+@@ -1568,11 +1575,12 @@ Status CameraService::connectHelper(const sp<CALLBACK>& cameraCb, const String8&
+         } else {
+             // Otherwise, add client to active clients list
+             finishConnectLocked(client, partial);
+-
++           #ifdef MOTORIZED_CAMERA_DEVICE
+             sp<ICameraMotor> cameraMotor = ICameraMotor::getService();
+             if (cameraMotor != nullptr) {
+                 cameraMotor->onConnect(cameraId.string());
+             }
++	   #endif
+         }
+     } // lock is destroyed, allow further connect calls
+ 
+@@ -2449,10 +2457,12 @@ binder::Status CameraService::BasicClient::disconnect() {
+     }
+     mDisconnected = true;
+ 
++    #ifdef MOTORIZED_CAMERA_DEVICE
+     sp<ICameraMotor> cameraMotor = ICameraMotor::getService();
+     if (cameraMotor != nullptr) {
+         cameraMotor->onDisconnect(mCameraIdStr.string());
+     }
++    #endif
+ 
+     sCameraService->removeByClient(this);
+     sCameraService->logDisconnected(mCameraIdStr, mClientPid, String8(mClientPackageName));
+@@ -2551,7 +2561,7 @@ status_t CameraService::BasicClient::startCameraOps() {
+     sCameraService->updateOpenCloseStatus(mCameraIdStr, true/*open*/, mClientPackageName);
+ 
+ #ifdef TARGET_NEEDS_CLIENT_INFO
+-    std::ofstream cpf("/data/misc/lineage/client_package_name");
++    std::ofstream cpf("/data/misc/du/client_package_name");
+     std::string cpn = String8(mClientPackageName).string();
+     cpf << cpn;
+ #endif
+-- 
+2.28.0
+
