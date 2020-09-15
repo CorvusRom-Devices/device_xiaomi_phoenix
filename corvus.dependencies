@@ -1,8 +1,8 @@
 [
   {
-    "repository": "rakeshraimca/Hardrock_kernel_phoenix",
+    "repository": "rakeshraimca/Hardrock_phoenix",
     "target_path": "kernel/xiaomi/sm6150",
-    "branch": "sm6150"
+    "branch": "wip"
   },
   {
     "repository": "kdrag0n/proton-clang",
@@ -15,9 +15,10 @@
     "branch": "10.0"
   },
   {
-    "repository": "sarveshrulz/android_vendor_aeonax_ANXCamera",
+    "repository": "rakeshraimca/anxcamera",
     "target_path": "vendor/aeonax/ANXCamera",
-    "branch": "master"
+    "branch": "master",
+    "remote": "gitlab"
   },
   {
     "repository": "CorvusRom-Devices/vendor_xiaomi_phoenix",
