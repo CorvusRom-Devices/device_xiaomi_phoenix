@@ -6,6 +6,12 @@
 
 $(call inherit-product, device/xiaomi/phoenix/device.mk)
 
+#
+# All components inherited here go to system_ext image
+#
+$(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_system_ext.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_system_ext.mk)
+
 #Bootanimation
 scr_resolution := 1080
 TARGET_BOOT_ANIMATION_RES := 1080
