@@ -99,3 +99,6 @@ ro.sf.blurs_are_expensive=1
 
 # Maintainer
 ro.corvus.maintainer=Trishiraj
+
+# Vulkan
+debug.hwui.renderer=skiavk
