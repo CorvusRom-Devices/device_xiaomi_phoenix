@@ -6,9 +6,9 @@ system_ext/framework/vendor.qti.hardware.alarm-V1.0-java.jar
 system_ext/lib/com.qualcomm.qti.ant@1.0.so
 system_ext/lib64/com.qualcomm.qti.ant@1.0.so
 
-# Bluetooth (aptX) - from coral-user 10 QQ3A.200805.001 6578210 release-keys
-product/lib64/libaptX_encoder.so|df1c89d7af1bb35808d5fe3496b04ba066c10cbc
-product/lib64/libaptXHD_encoder.so|e13fa70c97caaa24d061678bdee608eb8850a69e
+# Bluetooth (aptX) - redfin-user 11 RQ1D.210105.003 7005430 release-keys 
+system_ext/lib64/libaptXHD_encoder.so|e13fa70c97caaa24d061678bdee608eb8850a69e
+system_ext/lib64/libaptX_encoder.so|df1c89d7af1bb35808d5fe3496b04ba066c10cbc
 
 # Camera
 bin/cameraserver
