@@ -96,3 +96,6 @@ ro.corvus.maintainer=Trishiraj
 
 # Vulkan
 debug.hwui.renderer=skiavk
+
+# Gboard
+ro.com.google.ime.kb_pad_port_b=1
