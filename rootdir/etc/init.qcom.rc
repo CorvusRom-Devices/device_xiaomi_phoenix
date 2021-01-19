@@ -1223,6 +1223,12 @@ service vendor.contexthub-hal-1-0 /vendor/bin/hw/android.hardware.contexthub@1.0
     group system
     disabled
 
+service citsensor-hal-1-1  /vendor/bin/hw/vendor.xiaomi.hardware.citsensorservice@1.1-service
+    override
+    class late_start
+    user system
+    group system input
+
 on property:init.svc.cnss_diag=running
     stop cnss_diag
 
@@ -1231,3 +1237,4 @@ on property:init.svc.tcpdump=running
 
 on property:init.svc.vendor.ipacm-diag=running
     stop vendor.ipacm-diag
+
