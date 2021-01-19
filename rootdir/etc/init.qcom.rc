@@ -1222,3 +1222,12 @@ service vendor.contexthub-hal-1-0 /vendor/bin/hw/android.hardware.contexthub@1.0
     user system
     group system
     disabled
+
+on property:init.svc.cnss_diag=running
+    stop cnss_diag
+
+on property:init.svc.tcpdump=running
+    stop tcpdump
+
+on property:init.svc.vendor.ipacm-diag=running
+    stop vendor.ipacm-diag
