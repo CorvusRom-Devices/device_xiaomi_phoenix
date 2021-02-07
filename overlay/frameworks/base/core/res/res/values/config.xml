@@ -577,4 +577,7 @@
     <string name="config_oemFastChargerStatusPath" translatable="false">/sys/class/power_supply/bms/fastcharge_mode</string>
 
     <bool name="config_zramWriteback">true</bool>
+    
+    <!-- If not zero, limits the internal screen recorder's framerate to the set value. -->
+    <integer name="config_screenRecorderMaxFramerate">60</integer>
 </resources>
