@@ -24,4 +24,5 @@ debug.sf.enable_gl_backpressure=1
 # Priv-app permission
 ro.control_privapp_permissions=log
 
-
+# UseHwcVirtualDisplays
+debug.sf.enable_hwc_vds=1
