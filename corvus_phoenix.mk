@@ -12,14 +12,6 @@ $(call inherit-product, device/xiaomi/phoenix/device.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_system_ext.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_system_ext.mk)
 
-#Bootanimation
-scr_resolution := 1080
-TARGET_BOOT_ANIMATION_RES := 1080
-IS_PHONE := true
-
-# Gapps
-TARGET_GAPPS_ARCH := arm64
-
 # Faceunlock
 TARGET_FACE_UNLOCK_SUPPORTED := true
 
