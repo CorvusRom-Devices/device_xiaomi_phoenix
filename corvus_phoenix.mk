@@ -15,6 +15,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_system_ext.mk)
 # Faceunlock
 TARGET_FACE_UNLOCK_SUPPORTED := true
 
+scr_resolution := 1080
+
 # Inherit some common Corvus stuff.
 $(call inherit-product, vendor/corvus/config/common_full_phone.mk)
 
