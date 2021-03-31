@@ -12,6 +12,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
 # Get non-open-source specific aspects
+$(call inherit-product, vendor/xiaomi/phoenix/google/google.mk)
 $(call inherit-product, vendor/xiaomi/phoenix/phoenix-vendor.mk)
 
 # Include PSU if synced
