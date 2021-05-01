@@ -9,6 +9,9 @@ $(call inherit-product, device/xiaomi/phoenix/device.mk)
 # Inherit some common Corvus stuff.
 $(call inherit-product, vendor/corvus/config/common.mk)
 
+# Faceunlock
+TARGET_FACE_UNLOCK_SUPPORTED := true
+
 # Device identifier. This must come after all inclusions.
 PRODUCT_NAME := corvus_phoenix
 PRODUCT_DEVICE := phoenix
