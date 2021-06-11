@@ -3,3 +3,6 @@ allow platform_app sysfs_graphics:file r_file_perms;
 
 # Notch
 get_prop(platform_app, vendor_display_notch_prop)
+
+# Allow MIUI camera app to read no. of cpus
+allow platform_app cgroup:file r_file_perms;
