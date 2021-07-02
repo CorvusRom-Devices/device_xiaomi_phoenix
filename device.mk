@@ -170,11 +170,6 @@ PRODUCT_PACKAGES += \
     com.quicinc.cne \
     services-ext
 
-# Charging
-PRODUCT_PACKAGES += \
-    charger_res_images \
-    product_charger_res_images
-
 # Device Settings
 PRODUCT_PACKAGES += \
     XiaomiParts
