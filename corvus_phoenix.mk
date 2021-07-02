@@ -12,6 +12,9 @@ $(call inherit-product, vendor/corvus/config/common.mk)
 # Faceunlock
 TARGET_FACE_UNLOCK_SUPPORTED := true
 
+# Offline charging anim
+TARGET_INCLUDE_PIXEL_CHARGER := true
+
 # Device identifier. This must come after all inclusions.
 PRODUCT_NAME := corvus_phoenix
 PRODUCT_DEVICE := phoenix
