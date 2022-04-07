@@ -114,7 +114,6 @@ ro.crypto.volume.filenames_mode=aes-256-cts
 
 # Dalvik
 pm.dexopt.boot=verify
-pm.dexopt.first-boot=verify
 pm.dexopt.install=speed-profile
 dalvik.vm.image-dex2oat-filter=speed
 dalvik.vm.image-dex2oat-threads=8
@@ -163,7 +162,7 @@ ro.vendor.qti.va_aosp.support=1
 debug.egl.hw=0
 debug.mdpcomp.logs=0
 debug.sf.disable_backpressure=1
-debug.sf.enable_hwc_vds=1
+debug.sf.enable_hwc_vds=0
 debug.sf.frame_rate_multiple_threshold=120
 debug.sf.hw=0
 persist.sys.sf.color_saturation=1.0

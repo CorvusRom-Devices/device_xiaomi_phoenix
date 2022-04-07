@@ -5,9 +5,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lighthouse_phoenix.mk
-
-COMMON_LUNCH_CHOICES := \
-    lighthouse_phoenix-user \
-    lighthouse_phoenix-userdebug \
-    lighthouse_phoenix-eng
+    $(LOCAL_DIR)/corvus_phoenix.mk
